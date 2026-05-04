@@ -1,15 +1,10 @@
 import React, { useState } from 'react'
-import { API_URL } from '../config'
-type FormData = {
-    username: string,
-    password: string,
-}
-
-const emptyForm: FormData = {username: "", password: ""}
+import { API_URL, EMPTY_FORM } from '../config'
+import type { FormData } from '../config';
 
 function RegisterPage() {
 
-    const [formData, setFormData] = useState(emptyForm);
+    const [formData, setFormData] = useState<FormData>(EMPTY_FORM);
 
     function handleRegisterClick(){
         fetch(API_URL + "/auth/register",
@@ -31,7 +26,6 @@ function RegisterPage() {
             [name]: value
         }))
         console.log(formData);
-    
     }
   return (
     <div>
