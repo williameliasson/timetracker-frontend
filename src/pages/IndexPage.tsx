@@ -1,5 +1,6 @@
 import { useEffect, useState, type ReactNode } from "react"
 import { API_URL, type Session } from "../config";
+import SessionCard from "../components/SessionCard";
 
 function IndexPage() {
   const [sessions, setSessions] = useState<Session[]>([]);
@@ -14,8 +15,8 @@ function IndexPage() {
       setSessions(data);
     })
   }, [])
-  const allSessions = sessions.map(item => {
-    return <p key={item.id}> {item.category}: {item.startTime} - {item.endTime || ''}</p>
+  const allSessions = sessions.map(session => {
+    return <SessionCard session={session} />
   })
   return (
     <div>
