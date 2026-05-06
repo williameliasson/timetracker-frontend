@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { Session } from '../config'
 
 type SessionCardProps = {
@@ -5,11 +6,19 @@ type SessionCardProps = {
 }
 
 function SessionCard({session}: SessionCardProps) {
+  // const [showEndSessionButton, setShowEndSessionButton] = useState(false);
+  const showEndSessionButton = session.endTime === null;
   return (
-    <div key={session.id}>
-        <p>
-            {session.category}: {session.startTime} - {session.endTime || ''}
-        </p>
+    <div key={session.id} className='session-card'>
+        <div>
+            <h4>
+            {session.category}
+            </h4>
+        </div>
+            {session.startTime} - {session.endTime || '[NOT YET ENDED]'}
+        {showEndSessionButton && (
+          <button>End Session</button>
+        )}
     </div>
   )
 }
