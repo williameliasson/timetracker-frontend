@@ -19,4 +19,9 @@ export type Session = {
     category: string
 }
 
+export type Category = {
+    id: string,
+    name: string
+}
+
 export const EMPTY_FORM: FormData = {username: "", password: ""}
