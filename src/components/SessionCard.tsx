@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import { API_URL, type Session } from '../config'
 
 type SessionCardProps = {

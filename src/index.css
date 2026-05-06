@@ -18,4 +18,11 @@ body{
 
 .new-session-container{
     height:30px;
+    display: flex;
+    flex-direction: row;
+}
+
+.new-session-container * {
+    height: fit-content;
+    margin-left: 3px;
 }

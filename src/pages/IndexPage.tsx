@@ -91,6 +91,7 @@ function IndexPage() {
     <div>
       <h1>Index</h1>
       <div className="new-session-container">
+        <label htmlFor="categoryId">Category: </label>
         <select name="categoryId" id="categoryId" value={categoryId} onChange={handleCategoryChange}>
           {allOptions}
         </select>
