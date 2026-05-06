@@ -10,6 +10,7 @@ function IndexPage() {
       method: "GET",
       credentials: "include"
     }).then(res => {
+      if (!res.ok) return []
       return res.json()
     }).then(data => {
       setSessions(data);
