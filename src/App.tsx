@@ -5,12 +5,14 @@ import SessionsPage from "./pages/SessionsPage"
 import NotFoundPage from "./pages/NotFoundPage"
 import LoginPage from "./pages/LoginPage"
 import RegisterPage from "./pages/RegisterPage"
+import Navbar from "./components/Navbar"
 
 function App() {
 
   return (
     <>
     <BrowserRouter>
+      <Navbar />
       <Routes>
         <Route path="/" element={<IndexPage />} />
         <Route path="/login" element={<LoginPage />} />
