@@ -15,3 +15,7 @@ body{
 .session-card button{
     height: fit-content;
 }
+
+.new-session-container{
+    height:30px;
+}
