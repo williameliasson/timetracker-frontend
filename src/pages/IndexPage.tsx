@@ -1,4 +1,4 @@
-import { useEffect, useState, type ReactNode } from "react"
+import { useEffect, useState } from "react"
 import { API_URL, type Session } from "../config";
 import SessionCard from "../components/SessionCard";
 
