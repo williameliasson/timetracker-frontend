@@ -10,7 +10,8 @@ export type Session = {
     id: string,
     startTime: string,
     endTime: string | null,
-    category: string
+    category: string,
+    categoryId: string,
 }
 
 export type Category = {

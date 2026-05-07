@@ -8,6 +8,7 @@ import RegisterPage from "./pages/RegisterPage"
 import Navbar from "./components/Navbar"
 import CategoriesPage from "./pages/CategoriesPage"
 import { SessionsProvider } from "./components/SessionsContext"
+import { CategoriesProvider } from "./components/CategoriesContext"
 
 
 function App() {
@@ -17,15 +18,17 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <SessionsProvider>
-        <Routes>
-          <Route path="/" element={<IndexPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/register" element={<RegisterPage />} />
-          <Route path="/stats" element={<StatisticsPage />} />
-          <Route path="/sessions" element={<SessionsPage />} />
-          <Route path="/categories" element={<CategoriesPage />} />
-          <Route path="/*" element={<NotFoundPage />} />
-        </Routes>
+        <CategoriesProvider>
+          <Routes>
+            <Route path="/" element={<IndexPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+            <Route path="/stats" element={<StatisticsPage />} />
+            <Route path="/sessions" element={<SessionsPage />} />
+            <Route path="/categories" element={<CategoriesPage />} />
+            <Route path="/*" element={<NotFoundPage />} />
+          </Routes>
+        </CategoriesProvider>
       </SessionsProvider>
     </BrowserRouter>
     </>
