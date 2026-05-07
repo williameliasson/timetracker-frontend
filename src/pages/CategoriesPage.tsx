@@ -1,34 +1,22 @@
-import { useEffect, useState, type ChangeEvent } from "react"
+import { useContext, useEffect, useState, type ChangeEvent } from "react"
 import { API_URL, type Category } from "../config";
 import CategoryCard from "../components/CategoryCard";
+import { SessionsContext } from "../components/SessionsContext";
+import { CategoriesContext } from "../components/CategoriesContext";
 
 
 function CategoriesPage() {
-    const [categories, setCategories] = useState<Category[]>([]);
+    const sessionsContext = useContext(SessionsContext);
+      if (!sessionsContext){
+        return
+      }
+      const categoriesContext = useContext(CategoriesContext)
+      if (!categoriesContext){
+        return
+      }
+    const {fetchSessions} = sessionsContext;
+    const {categories, fetchCategories} = categoriesContext;
     const [newCategoryName, setNewCategoryName] = useState<string>("");
-
-    const fetchCategories = () => {
-        //fetch and store in sessions stat var
-        fetch(API_URL + "/me/categories", {
-          method: "GET",
-          credentials: "include"
-        }).then(res => {
-          if (!res.ok) return []
-          return res.json()
-        }).then(data => {
-          data = data.sort((a: Category, b: Category) => {
-            if (a.name < b.name){
-              return -1;
-            }
-            if (a.name > b.name){
-              return 1;
-            }
-            return 0;
-          })
-          setCategories(data);
-          return data
-        })
-    }
 
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const {value} = e.target;
@@ -49,6 +37,7 @@ function CategoriesPage() {
             if (res.ok) {
                 setNewCategoryName("");
                 fetchCategories();
+                fetchSessions();
             }
 
         })

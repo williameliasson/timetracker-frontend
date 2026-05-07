@@ -10,7 +10,8 @@ export type Session = {
     id: string,
     startTime: string,
     endTime: string | null,
-    category: string
+    category: string,
+    categoryId: string,
 }
 
 export type Category = {
@@ -22,5 +23,8 @@ export const EMPTY_FORM: FormData = {username: "", password: ""}
 export const TIMEFRAME_DAYS = 30;
 export type PiePiece = {
     category: string,
-    seconds: number
+    seconds: number,
+    fill: string,
 }
+
+export const PIE_COLORS = ["#00c100", "#0067c1", "#d4dc00","#3700dc","#00dcd5", "#dc0096", "#dc7900"]
