@@ -7,12 +7,6 @@ export type FormData = {
 }
 
 export type Session = {
-    // private String id;
-    // private Instant startTime;
-    // private Instant endTime;
-
-    // private String category;
-
     id: string,
     startTime: string,
     endTime: string | null,
@@ -25,3 +19,8 @@ export type Category = {
 }
 
 export const EMPTY_FORM: FormData = {username: "", password: ""}
+export const TIMEFRAME_DAYS = 30;
+export type PiePiece = {
+    category: string,
+    seconds: number
+}
