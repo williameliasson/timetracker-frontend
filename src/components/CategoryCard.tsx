@@ -2,10 +2,11 @@ import { useState, type ChangeEvent } from "react"
 import { API_URL, type Category } from "../config"
 
 type CategoryCardProps = {
-    category: Category
+    category: Category,
+    onUpdate: () => void
 }
 
-function CategoryCard({category}: CategoryCardProps) {
+function CategoryCard({category, onUpdate}: CategoryCardProps) {
     const [categoryName, setCategoryName] = useState<string>(category.name);
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const {value} = e.target;
@@ -15,10 +16,15 @@ function CategoryCard({category}: CategoryCardProps) {
     const handleSubmit = () => {
         fetch(API_URL + "/me/categories/" + category.id, {
             method: "PATCH",
+            headers: {
+                "Content-Type": "application/json"
+            },
             body: JSON.stringify({
                 name: categoryName
             }),
             credentials: "include"
+        }).then(() => {
+            onUpdate()
         })
     }
   return (

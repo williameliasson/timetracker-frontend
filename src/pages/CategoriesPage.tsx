@@ -29,7 +29,7 @@ function CategoriesPage() {
     }
     
     const allCategoryCards = categories.map((category: Category) => {
-        return <CategoryCard category={category}/>
+        return <CategoryCard category={category} onUpdate={fetchCategories}/>
     })
 
     useEffect(() => {
