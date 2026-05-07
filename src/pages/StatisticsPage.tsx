@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { SessionsContext } from "../components/SessionsContext";
 import { Pie, PieChart } from "recharts";
 import { PIE_COLORS, type PiePiece, TIMEFRAME_DAYS } from "../config";
+import { secondsToHMS } from "../utils";
 
 function StatisticsPage() {
   const sessionsContext = useContext(SessionsContext);
@@ -59,7 +60,7 @@ function StatisticsPage() {
       <div>
         <h3>Sums of seconds of each category last 30 days</h3>
           {pieData.map((piePiece) => (
-            <p key={piePiece.category}>{piePiece.category}: {Math.floor(piePiece.seconds)} seconds</p>
+            <p key={piePiece.category}>{piePiece.category}: {secondsToHMS(Math.floor(piePiece.seconds))}</p>
           ))}
       </div>
     </div>
