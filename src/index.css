@@ -16,6 +16,10 @@ nav *{
     box-shadow: 3px 3px 3px;
 }
 
+.usersummary-card p{
+    margin-left:5px;
+}
+
 .session-card{
     background-color: rgb(114, 196, 234);
     display: flex;

@@ -9,7 +9,10 @@ function AdminPage() {
             method: "GET",
             credentials: "include"
         }).then((res) => {
-            return res.json()
+            if (res.ok){
+                return res.json()
+            }
+            return [];
         }).then(data => {
             setUserSummaries(data);
         })
@@ -18,12 +21,13 @@ function AdminPage() {
         fetchUserSummaries();
     }, [])
   const allUserSummaryCards = userSummaries.map(userSummary => {
-    return <UserSummaryCard userSummary={userSummary}/>
+    return <UserSummaryCard key={userSummary.userId} userSummary={userSummary}/>
   })
   return (
     <div>
         <h1>Admin page</h1>
-        {allUserSummaryCards}
+        {userSummaries.length > 0 && allUserSummaryCards}
+        {userSummaries.length === 0 && 'Theres no summaries to show!'}
     </div>
   )
 }
