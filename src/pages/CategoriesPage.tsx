@@ -1,9 +1,15 @@
-import { useEffect, useState, type ChangeEvent } from "react"
+import { useContext, useEffect, useState, type ChangeEvent } from "react"
 import { API_URL, type Category } from "../config";
 import CategoryCard from "../components/CategoryCard";
+import { SessionsContext } from "../components/SessionsContext";
 
 
 function CategoriesPage() {
+    const sessionsContext = useContext(SessionsContext);
+      if (!sessionsContext){
+        return
+      }
+    const {fetchSessions} = sessionsContext;
     const [categories, setCategories] = useState<Category[]>([]);
     const [newCategoryName, setNewCategoryName] = useState<string>("");
 
@@ -49,6 +55,7 @@ function CategoriesPage() {
             if (res.ok) {
                 setNewCategoryName("");
                 fetchCategories();
+                fetchSessions();
             }
 
         })
