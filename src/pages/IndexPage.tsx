@@ -16,6 +16,9 @@ function IndexPage() {
   const [categoryId, setCategoryId] = useState<string>("");
   useEffect(() => {
     let userHasOpenSession = false;
+    if (categories.length === 0){
+      return;
+    }
     if (sessions.length === 0){
       setShowNewSessionButton(true);
       return;

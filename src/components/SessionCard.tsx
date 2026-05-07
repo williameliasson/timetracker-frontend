@@ -7,6 +7,11 @@ type SessionCardProps = {
     onUpdate: () => void,
 }
 
+function getHumanDate(dateString: string){
+    const parts = dateString.split("T");
+    return parts[0] + " " + parts[1].slice(0,8);
+}
+
 function SessionCard({session, onUpdate}: SessionCardProps) {
   const categoriesContext = useContext(CategoriesContext)
   if (!categoriesContext){
@@ -53,15 +58,17 @@ function SessionCard({session, onUpdate}: SessionCardProps) {
   const showEndSessionButton = session.endTime === null;
   return (
     <div key={session.id} className='session-card'>
-        {/* <div>
-            {session.category}
-        </div> */}
         <div>
             <select name="categoryName" id="categoryName" onChange={handleChangedCategory} value={categoryId}>
                 {allOptions}
             </select>
         </div>
-            {session.startTime} - {session.endTime || '[NOT YET ENDED]'}
+        <div>
+            {getHumanDate(session.startTime)} --- {session.endTime && getHumanDate(session.endTime) || '[NOT YET ENDED]'}
+        </div>
+        <div>
+            --- {session.endTime && Math.floor((new Date(session.endTime).getTime() - new Date(session.startTime).getTime())/1000)} {session.endTime && "seconds"}
+        </div>
         {showEndSessionButton && (
           <button onClick={handleClick}>End Session</button>
         )}

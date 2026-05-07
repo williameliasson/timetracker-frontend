@@ -42,6 +42,7 @@ function StatisticsPage() {
     <div>
       <h1>Stats</h1>
       <div>
+        <h3>Pie chart over time spent on each category last 30 days</h3>
         {/* src: https://recharts.github.io/en-US/examples/PieChartWithPaddingAngle/ */}
         <PieChart className="piechart" style={{ width: '100%', maxWidth: '500px', maxHeight: '80vh', aspectRatio: 1 }}>
           <Pie
@@ -57,7 +58,7 @@ function StatisticsPage() {
       <div>
         <h3>Sums of seconds of each category last 30 days</h3>
           {pieData.map((piePiece) => (
-            <p>{piePiece.category}: {Math.floor(piePiece.seconds)} seconds</p>
+            <p key={piePiece.category}>{piePiece.category}: {Math.floor(piePiece.seconds)} seconds</p>
           ))}
       </div>
     </div>
