@@ -6,6 +6,7 @@ import NotFoundPage from "./pages/NotFoundPage"
 import LoginPage from "./pages/LoginPage"
 import RegisterPage from "./pages/RegisterPage"
 import Navbar from "./components/Navbar"
+import CategoriesPage from "./pages/CategoriesPage"
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/stats" element={<StatisticsPage />} />
         <Route path="/sessions" element={<SessionsPage />} />
+        <Route path="/categories" element={<CategoriesPage />} />
         <Route path="/*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
