@@ -12,6 +12,7 @@ function IndexPage() {
   useEffect(() => {
     let userHasOpenSession = false;
     if (sessions.length === 0){
+      setShowNewSessionButton(true);
       return;
     }
     sessions.forEach((session) => {
