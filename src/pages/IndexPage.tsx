@@ -1,10 +1,15 @@
-import { useEffect, useState, type ChangeEvent } from "react"
+import { useContext, useEffect, useState, type ChangeEvent } from "react"
 import { API_URL, type Category, type Session } from "../config";
 import SessionCard from "../components/SessionCard";
 import NewSessionButton from "../components/NewSessionButton";
+import { SessionsContext } from "../components/SessionsContext";
 
 function IndexPage() {
-  const [sessions, setSessions] = useState<Session[]>([]);
+  const sessionsContext = useContext(SessionsContext);
+  if (!sessionsContext){
+    return
+  }
+  const {sessions, fetchSessions} = sessionsContext;
   const [categories, setCategories] = useState<Category[]>([]);
   const [showNewSessionButton, setShowNewSessionButton] = useState(false);
 
@@ -22,29 +27,6 @@ function IndexPage() {
     })
     setShowNewSessionButton(!userHasOpenSession);
   }, [sessions])
-
-  const fetchSessions = () => {
-    //fetch and store in sessions stat var
-    fetch(API_URL + "/me/sessions", {
-      method: "GET",
-      credentials: "include"
-    }).then(res => {
-      if (!res.ok) return []
-      return res.json()
-    }).then(data => {
-      data = data.sort((a: Session, b: Session) => {
-        if (a.startTime < b.startTime){
-          return -1;
-        }
-        if (a.startTime > b.startTime){
-          return 1;
-        }
-        return 0;
-      })
-      data = data.reverse()
-      setSessions(data);
-    })
-  }
 
   const fetchCategories = () => {
     //fetch and store in sessions stat var
