@@ -24,18 +24,14 @@ function StatisticsPage() {
     
     filteredDays.forEach((session) => {
       if (session.endTime === null) return;
-      let sessionMinutes = (new Date(session.endTime).getTime() - new Date(session.startTime).getTime()) / 1000
-      // tempPieData = tempPieData.map((piePiece: PiePiece) => {
-      //   piePiece.category === session.category
-      //   ? { ...piePiece, minutes: piePiece.minutes += sessionMinutes}
-      //   : {...piePiece}
+      let sessionSeconds = (new Date(session.endTime).getTime() - new Date(session.startTime).getTime()) / 1000
       let existingCategory = tempPieData.find((piePiece: PiePiece) => (piePiece.category === session.category))
       if (existingCategory){
-        existingCategory.minutes += sessionMinutes
+        existingCategory.seconds += sessionSeconds
       } else {
         tempPieData.push({
           category: session.category,
-          minutes: sessionMinutes
+          seconds: sessionSeconds
         })
       }
       })
@@ -58,14 +54,16 @@ function StatisticsPage() {
           
           data={pieData} 
           nameKey="category"
-          dataKey="minutes"
+          dataKey="seconds"
           label={({ name }) => name}
           />
         </PieChart>
           
       </div>
       <div>
-          {allSessions}
+          {pieData.map((piePiece) => (
+            <p>{piePiece.category}: {Math.floor(piePiece.seconds)} seconds</p>
+          ))}
       </div>
     </div>
   )
