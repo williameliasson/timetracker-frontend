@@ -6,7 +6,7 @@ type CategoryCardProps = {
 
 function CategoryCard({category}: CategoryCardProps) {
   return (
-    <div>
+    <div className="category-card">
         <h1>{category.name}</h1>
     </div>
   )
