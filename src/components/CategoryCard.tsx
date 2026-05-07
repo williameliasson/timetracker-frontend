@@ -5,9 +5,12 @@ type CategoryCardProps = {
     category: Category,
     onUpdate: () => void
 }
+const secondsPerConfirmationMessage = 2;
 
 function CategoryCard({category, onUpdate}: CategoryCardProps) {
     const [categoryName, setCategoryName] = useState<string>(category.name);
+    const [showConfirmation, setShowConfirmation] = useState<boolean>(false);
+
     const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
         const {value} = e.target;
         setCategoryName(value);
@@ -23,14 +26,21 @@ function CategoryCard({category, onUpdate}: CategoryCardProps) {
                 name: categoryName
             }),
             credentials: "include"
-        }).then(() => {
+        }).then((res) => {
             onUpdate()
+            if (res.ok){
+                setShowConfirmation(true);
+                setTimeout(() => {
+                    setShowConfirmation(false);
+                }, secondsPerConfirmationMessage * 1000);
+            }
         })
     }
   return (
     <div className="category-card" key={category.id}>
         <input name="categoryName" id={category.id} value={categoryName} onChange={handleChange}></input>
         <button onClick={handleSubmit}>✅</button>
+        {showConfirmation && <div>Successful save</div>}
     </div>
   )
 }
