@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState, type ChangeEvent } from "react"
-import { API_URL, type Category, type Session } from "../config";
+import { API_URL, type Category } from "../config";
 import SessionCard from "../components/SessionCard";
 import NewSessionButton from "../components/NewSessionButton";
 import { SessionsContext } from "../components/SessionsContext";

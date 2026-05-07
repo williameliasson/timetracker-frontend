@@ -1,18 +1,17 @@
 import { useContext, useEffect, useState } from "react";
 import { SessionsContext } from "../components/SessionsContext";
 import { Pie, PieChart } from "recharts";
-import { type PiePiece, type Session, TIMEFRAME_DAYS } from "../config";
-import SessionCard from "../components/SessionCard";
+import { type PiePiece, TIMEFRAME_DAYS } from "../config";
 
 function StatisticsPage() {
   const sessionsContext = useContext(SessionsContext);
   if (!sessionsContext){
     return
   }
-  const {sessions, fetchSessions} = sessionsContext;
+  const {sessions} = sessionsContext;
 
   const [pieData, setPieData] = useState<PiePiece[]>([]);
-  const [sessionsWithinDays, setSessionsWithinDays] = useState<Session[]>([]);
+  // const [sessionsWithinDays, setSessionsWithinDays] = useState<Session[]>([]);
   useEffect(() => {
     let tempPieData: PiePiece[] = [];
     let filteredDays = sessions.filter((session) => {
@@ -20,7 +19,7 @@ function StatisticsPage() {
       cutoffDate.setDate(cutoffDate.getDate() - TIMEFRAME_DAYS);
       return new Date(session.startTime) > cutoffDate;
     })
-    setSessionsWithinDays(filteredDays);
+    // setSessionsWithinDays(filteredDays);
     
     filteredDays.forEach((session) => {
       if (session.endTime === null) return;
@@ -37,12 +36,7 @@ function StatisticsPage() {
       })
     
     setPieData(tempPieData);
-    console.log(tempPieData)
     }, [sessions])
-
-  const allSessions = sessionsWithinDays.map(session => {
-    return <SessionCard session={session} onUpdate={fetchSessions}/>
-  })
 
   return (
     <div>
@@ -61,6 +55,7 @@ function StatisticsPage() {
           
       </div>
       <div>
+        <h3>Sums of seconds of each category last 30 days</h3>
           {pieData.map((piePiece) => (
             <p>{piePiece.category}: {Math.floor(piePiece.seconds)} seconds</p>
           ))}
