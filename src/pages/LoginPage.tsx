@@ -30,7 +30,6 @@ function LoginPage() {
                 ...prev,
                 [name]: value
             }))
-            console.log(formData);
         }
     
   return (

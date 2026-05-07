@@ -1,6 +1,7 @@
 import { useContext, useState, type ChangeEvent } from 'react'
 import { API_URL, type Session } from '../config'
 import { CategoriesContext } from './CategoriesContext'
+import { secondsToHMS } from '../utils';
 
 type SessionCardProps = {
     session: Session,
@@ -67,7 +68,7 @@ function SessionCard({session, onUpdate}: SessionCardProps) {
             {getHumanDate(session.startTime)} --- {session.endTime && getHumanDate(session.endTime) || '[NOT YET ENDED]'}
         </div>
         <div>
-            --- {session.endTime && Math.floor((new Date(session.endTime).getTime() - new Date(session.startTime).getTime())/1000)} {session.endTime && "seconds"}
+            --- {session.endTime && secondsToHMS(Math.floor((new Date(session.endTime).getTime() - new Date(session.startTime).getTime())/1000))}
         </div>
         {showEndSessionButton && (
           <button onClick={handleClick}>End Session</button>
