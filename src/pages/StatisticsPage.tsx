@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { SessionsContext } from "../components/SessionsContext";
 import { Pie, PieChart } from "recharts";
-import { type PiePiece, TIMEFRAME_DAYS } from "../config";
+import { PIE_COLORS, type PiePiece, TIMEFRAME_DAYS } from "../config";
 
 function StatisticsPage() {
   const sessionsContext = useContext(SessionsContext);
@@ -30,7 +30,8 @@ function StatisticsPage() {
       } else {
         tempPieData.push({
           category: session.category,
-          seconds: sessionSeconds
+          seconds: sessionSeconds,
+          fill: PIE_COLORS[Math.floor(Math.random()*PIE_COLORS.length)]
         })
       }
       })
