@@ -25,3 +25,8 @@ export type Category = {
 }
 
 export const EMPTY_FORM: FormData = {username: "", password: ""}
+export const TIMEFRAME_DAYS = 30;
+export type PiePiece = {
+    category: string,
+    minutes: number
+}

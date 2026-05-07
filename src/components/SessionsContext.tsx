@@ -1,4 +1,4 @@
-import { createContext, useState, type ReactNode } from "react"
+import { createContext, useEffect, useState, type ReactNode } from "react"
 import { API_URL, type Session } from "../config";
 
 type SessionsContextType = {
@@ -33,6 +33,10 @@ export function SessionsProvider({children}: {children: ReactNode}) {
           setSessions(data);
         })
       }
+
+      useEffect(() => {
+        fetchSessions()
+      }, [])
   return (
     <SessionsContext.Provider value={{sessions, fetchSessions}}>
         {children}
