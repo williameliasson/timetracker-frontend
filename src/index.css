@@ -16,6 +16,17 @@ body{
     height: fit-content;
 }
 
+.category-card{
+    background-color: rgb(53, 219, 125);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top:10px;
+    padding: 3px;
+    border-radius: 10px;
+    box-shadow: 3px 3px 3px;
+}
+
 .new-session-container{
     height:30px;
     display: flex;
