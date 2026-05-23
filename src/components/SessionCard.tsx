@@ -9,8 +9,11 @@ type SessionCardProps = {
 }
 
 function getHumanDate(dateString: string){
-    const parts = dateString.split("T");
-    return parts[0] + " " + parts[1].slice(0,8);
+    const date = new Date(dateString)
+    return new Intl.DateTimeFormat(undefined, {
+        dateStyle: "medium",
+        timeStyle: "medium"
+    }).format(date);
 }
 
 function SessionCard({session, onUpdate}: SessionCardProps) {
