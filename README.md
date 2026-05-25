@@ -1,7 +1,7 @@
 # Frontend for Timetracker
 For the assignment
 Deployed [here](https://time.williameliasson.com)
-Also see [the backend](https://github.com/plugga-tech/timetracker-backend-williameliasson)
+Also see [the backend](https://github.com/williameliasson/timetracker-backend)
 ## Features
 * User registration and login
 * Admin page to view users total logged time (last 30 days) (username: admin, password: admin)
