@@ -23,4 +23,4 @@ Also see [the backend](https://github.com/williameliasson/timetracker-backend)
 ### Categories Page
 ![Categories Page](https://github.com/williameliasson/timetracker-frontend/blob/dev/example_categories.png)
 ### Stats page
-![Stats page](https://github.com/williameliasson/timetracker-frontend/dev/main/example_stats.png)
+![Stats page](https://github.com/williameliasson/timetracker-frontend/blob/dev/example_stats.png)
