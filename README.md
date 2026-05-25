@@ -19,8 +19,8 @@ Also see [the backend](https://github.com/williameliasson/timetracker-backend)
 
 ## Example screenshots
 ### Index Page
-![Index page](https://github.com/plugga-tech/timetracker-frontend-williameliasson/blob/main/example_index.png)
+![Index page](https://github.com/williameliasson/timetracker-frontend/blob/dev/example_index.png)
 ### Categories Page
-![Categories Page](https://github.com/plugga-tech/timetracker-frontend-williameliasson/blob/main/example_categories.png)
+![Categories Page](https://github.com/williameliasson/timetracker-frontend/blob/dev/example_categories.png)
 ### Stats page
-![Stats page](https://github.com/plugga-tech/timetracker-frontend-williameliasson/blob/main/example_stats.png)
+![Stats page](https://github.com/williameliasson/timetracker-frontend/blob/dev/example_stats.png)
