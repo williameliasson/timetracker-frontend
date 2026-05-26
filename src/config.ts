@@ -1,5 +1,5 @@
-export const API_URL = "https://api.time.williameliasson.com/api";
-// export const API_URL = "http://localhost:8080/api"
+// export const API_URL = "https://api.time.williameliasson.com/api";
+export const API_URL = "http://localhost:8080/api"
 
 export const EMPTY_FORM: FormData = {username: "", password: ""}
 export const TIMEFRAME_DAYS = 30;

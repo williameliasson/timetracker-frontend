@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState, type ChangeEvent } from "react"
 import { API_URL, type Category } from "../config";
-import SessionCard from "../components/SessionCard";
+import SessionCard from "../components/SessionCard/SessionCard";
 import NewSessionButton from "../components/NewSessionButton";
 import { SessionsContext } from "../components/SessionsContext";
 
@@ -76,17 +76,19 @@ function IndexPage() {
   return (
     <div>
       <h1>Index</h1>
-      <div className="new-session-container">
-        {categories.length != 0 && <div>
-          <label htmlFor="categoryId">Category: </label>
-          <select name="categoryId" id="categoryId" value={categoryId} onChange={handleCategoryChange}>
-            {allOptions}
-          </select>
-        </div>}
-        <NewSessionButton categoryId={categoryId} enabled={showNewSessionButton} onUpdate={fetchSessions}/>
-      </div>
-      <div>
-        {allSessions}
+      <div className="centered">
+        <div className="new-session-container">
+          {categories.length != 0 && <div>
+            <label htmlFor="categoryId">Category: </label>
+            <select name="categoryId" id="categoryId" value={categoryId} onChange={handleCategoryChange}>
+              {allOptions}
+            </select>
+          </div>}
+          <NewSessionButton categoryId={categoryId} enabled={showNewSessionButton} onUpdate={fetchSessions}/>
+        </div>
+        <div>
+          {allSessions}
+        </div>
       </div>
     </div>
   )

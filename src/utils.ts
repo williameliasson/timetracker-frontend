@@ -11,9 +11,9 @@ export function secondsToHMS(seconds: number): string {
     remainingSeconds > 0 ? `${remainingSeconds} second${remainingSeconds > 1 ? 's' : ''}` : ''
 
   if (hours > 0) {
-    return `${hourString} : ${minuteString || '0 minute'} ${secondString && `: ${secondString}`}`
+    return `${hourString}, ${minuteString || '0 minute'} ${secondString && ` and ${secondString}`}`
   } else if (!hours && minutes > 0) {
-    return `${minuteString} ${secondString && `: ${secondString}`}`
+    return `${minuteString} ${secondString && `and ${secondString}`}`
   }
 
   return secondString
